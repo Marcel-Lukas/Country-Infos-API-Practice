@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <meta name="author" content="Marcel Lukas">
+    <link rel="icon" type="image/png" href="src/img/favicon/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="src/img/favicon/favicon.svg">
+    <link rel="shortcut icon" href="src/img/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="src/img/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="src/img/favicon/site.webmanifest">
+    <title>Länder API</title>
+
+    <link rel="stylesheet" type="text/css" href="./src/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="./src/css/fonts.css">
+
+    <script defer src="src/js/script.js"></script>
+
+  </head>
+
+  <body onload="init()">
+
+    <header>
+      <a href="index.html"><img id="world-logo" src="src/img/world.gif" alt="World"></a>
+      <h1 id="headerTitle">Länderinformationen auf einen Blick</h1>
+      <input id="inputId" type="search" placeholder="search..." onkeyup="searching()">
+    </header>
+
+    <div id="loadingScreen" class="d-none">
+      <img src="src/img/world-black-bg.gif" alt="World">
+      <div id="row">
+        <div id="loadingText">LOADING</div>
+        <img src="src/img/loading-gif.gif" alt="Loading Spinner">
+      </div>
+    </div>
+
+    <nav>
+      <button class="btn" onclick="filterByContinent()">World</button>
+      <button class="btn" onclick="filterByContinent('Europe')">Europa</button>
+      <button class="btn" onclick="filterByContinent('North America')">North America</button>
+      <button class="btn" onclick="filterByContinent('South America')">South America</button>
+      <button class="btn" onclick="filterByContinent('Africa')">Africa</button>
+      <button class="btn" onclick="filterByContinent('Asia')">Asia</button>
+      <button class="btn" onclick="filterByContinent('Oceania')">Oceania</button>
+      <button class="btn" onclick="filterByContinent('Antarctica')">Antarctica</button>
+    </nav>
+
+    <main>
+      <div id="countriesContainer"></div>
+    </main>
+    
+    <div id="overlay" class="d-none">
+      <div id="overlayContent"></div>
+    </div>
+    
+
+  </body>
+
+</html>

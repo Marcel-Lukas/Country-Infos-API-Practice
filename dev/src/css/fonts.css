@@ -1,0 +1,89 @@
+/* OpenSans Light */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/openSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* OpenSans Light Italic */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/openSans-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* OpenSans Regular */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/openSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* OpenSans Italic */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/openSans-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* OpenSans Medium */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/openSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* OpenSans Medium Italic */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/openSans-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* OpenSans Bold */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/openSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* OpenSans Bold Italic */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/openSans-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* OpenSans ExtraBold */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/openSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* OpenSans ExtraBold Italic */
+@font-face {
+  font-family: 'OpenSans';
+  src: url('../fonts/openSans-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
