@@ -126,21 +126,42 @@ function renderFilteredCountries(filteredCountries) {
 
 // ########### 
 
+
 function openOverlay(flagElement) {
-  // Land anhand des Alt-Texts identifizieren
   const altText = flagElement.alt;
   const countryName = altText.replace("Flag of ", "");
-  
-  // Aus allCountries das passende Objekt suchen
-  const country = allCountries.find(c => c.name.common === countryName);
+
+  currentCountryIndex = allCountries.findIndex(
+    (c) => c.name.common === countryName
+  );
+
+  updateOverlay();
+
+  document.getElementById("overlay").classList.remove("d-none");
+}
+
+
+function closeOverlay() {
+  document.getElementById("overlay").classList.add("d-none");
+}
+
+
+overlay.addEventListener("click", (event) => {
+  if (event.target === overlay) {
+    closeOverlay();
+  }
+});
+
+
+
+function updateOverlay() {
+  const country = allCountries[currentCountryIndex];
 
   const commonName = country.name.common || "N/A";
   const officialName = country.name.official || "N/A";
   const capital = country.capital ? country.capital.join(", ") : "N/A";
   const currencies = country.currencies
-    ? Object.values(country.currencies)
-        .map(curr => `${curr.name} (${curr.symbol || ""})`)
-        .join(", ")
+    ? Object.values(country.currencies).map(curr => `${curr.name} (${curr.symbol || ""})`).join(", ")
     : "N/A";
   const region = country.region || "N/A";
   const subregion = country.subregion || "N/A";
@@ -161,7 +182,7 @@ function openOverlay(flagElement) {
     ? `<img src="${country.coatOfArms.png}" alt="Coat of Arms of ${commonName}">`
     : "N/A";
   const googleMapsLink = country.maps?.googleMaps
-    ? `<a href="${country.maps.googleMaps}" target="_blank">View on Google Maps</a>`
+    ? `<a href="${country.maps.googleMaps}" target="_blank" rel="noopener noreferrer">View on Google Maps</a>`
     : "N/A";
   const timezones = country.timezones
     ? country.timezones.join(", ")
@@ -174,13 +195,10 @@ function openOverlay(flagElement) {
     : "N/A";
   const cca2 = country.cca2 || "N/A";
   const phoneCode = country.idd?.root
-    ? `${country.idd.root}${
-        country.idd.suffixes ? country.idd.suffixes.join(", ") : ""
-      }`
+    ? `${country.idd.root}${country.idd.suffixes ? country.idd.suffixes.join(", ") : ""}`
     : "N/A";
 
-  
-    const overlayHTML = /*html*/ `
+  const overlayHTML = /*html*/ `
     <div class="overlay-header">
       <img id="x-btn" onclick="closeOverlay()" src="src/img/icons/x-mark.png" alt="X-Button">
     </div>
@@ -216,27 +234,21 @@ function openOverlay(flagElement) {
   `;
 
   const overlayContent = document.getElementById("overlayContent");
-  const overlay = document.getElementById("overlay");
-  
-  overlayContent.innerHTML = overlayHTML;
-  overlay.classList.remove("d-none");
-}
-
-
-function closeOverlay() {
-  document.getElementById("overlay").classList.add("d-none");
-}
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  const overlay = document.getElementById("overlay");
-  if (overlay) {
-    overlay.addEventListener("click", function(event) {
-      if (!document.getElementById("overlayContent").contains(event.target)) {
-        closeOverlay();
-      }
-    });
+  if (overlayContent) {
+    overlayContent.innerHTML = overlayHTML;
   }
-});
+}
 
 
+function prevCountry() {
+  currentCountryIndex = (currentCountryIndex - 1 + allCountries.length) % allCountries.length;
+  updateOverlay();
+  console.log("prevCountry");
+}
+
+
+function nextCountry() {
+  currentCountryIndex = (currentCountryIndex + 1) % allCountries.length;
+  updateOverlay();
+  console.log("nextCountry");
+}
