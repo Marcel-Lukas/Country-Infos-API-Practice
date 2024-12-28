@@ -252,3 +252,26 @@ function nextCountry() {
   updateOverlay();
   console.log("nextCountry");
 }
+
+
+
+function searching() {
+  const searchInput = document.getElementById('inputId').value.toLowerCase();
+  const countriesContainer = document.getElementById('countriesContainer');
+  const countryCards = countriesContainer.getElementsByClassName('country-card');
+
+  for (let i = 0; i < countryCards.length; i++) {
+      const countryCard = countryCards[i];
+      const countryNameElement = countryCard.querySelector('h2');
+
+      if (countryNameElement) {
+          const countryName = countryNameElement.textContent.toLowerCase();
+
+          if (countryName.includes(searchInput)) {
+              countryCard.style.display = '';
+          } else {
+              countryCard.style.display = 'none';
+          }
+      }
+  }
+}
